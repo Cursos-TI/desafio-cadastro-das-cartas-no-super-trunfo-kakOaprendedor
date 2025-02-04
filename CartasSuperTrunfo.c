@@ -11,6 +11,8 @@ int main(){
     float area;
     float pib;
     int pontotur;
+    float percapita;
+    float densidadepopular;
     
     printf("digite estado:\n");
     scanf("%s", &estado);
@@ -26,6 +28,10 @@ int main(){
     scanf("%f", &pib);
     printf("digite N pontos Turísticos:\n");
     scanf("%i", &pontotur);
+    //essa implementação fiz em uma tacada só
+    percapita = popular/pib;
+    densidadepopular = popular/area;
+    //eu chutei que o cálculo de variáveis seria algo simples
     printf("Carta registrada!\n");
     printf("estado:%s\n",estado);
     printf("Código:%s\n",codigodacarta);
@@ -34,6 +40,8 @@ int main(){
     printf("Àrea:%.3f\n",area);
     printf("PIB:%.3f\n",pib);
     printf("Pontos Turísticos:%i\n",pontotur);
+    printf("Percapita: %.f\n",percapita);
+    printf("Densidade Populacional: %.f\n",densidadepopular);
     
     return 0;
 }
