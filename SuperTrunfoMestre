@@ -1,0 +1,122 @@
+int contar = 0;
+// criei um contador que contabiliza quantas vezes chamei a função chamada
+//que por sua vez vai perguntar e guardar a resposta do úsuario
+//isso sem eu ter que escrever a pergunta e o scanf pra cada pergunta
+
+void chamada(char *formato, void *variavel){
+    contar ++;
+    printf("digite %i:\n", contar);
+    scanf(formato, variavel);
+}
+void segundachamada(char *formato, void *variavel){
+    contar --;
+    printf("digite %i:\n", contar);
+    scanf(formato, variavel);
+}
+// na segunda carta simplesmente inverti o contador, agora ele diminui conforme eu chamo
+
+int main(){
+printf("Bem Vindo ao SuperTrunfo: Países\nAqui está sua tabela de opções:\nEstado(1)Cidade(2)Codigo da Carta(3)\nPopulação(4)Área(5)PIB(6)Pontos Turísticos(7)\n");
+
+char estado[10];
+chamada("%s", &estado);
+
+char cidade[10];
+chamada("%s", &cidade);
+
+char codigocarta[10];
+chamada("%s", &codigocarta);
+
+float popular;
+chamada("%f", &popular);
+
+float area;
+chamada("%f", &area);
+
+float pib;
+chamada("%f", &pib);
+
+int pontotur;
+chamada("%i", &pontotur);
+
+printf("1 carta registrada, agora para 2 carta se inverte a tabela. Logo (7) vira Estado.\n");
+contar ++;
+char estado2[10];
+segundachamada("%s", &estado2);
+
+char cidade2[10];
+segundachamada("%s", &cidade2);
+
+char codigocarta2[10];
+segundachamada("%s", &codigocarta2);
+
+float popular2;
+segundachamada("%f", &popular2);
+
+float area2;
+segundachamada("%f", &area2);
+
+float pib2;
+segundachamada("%f", &pib2);
+
+int pontotur2;
+segundachamada("%i", &pontotur2);
+
+    float densopopular = popular/area;
+    float percapita = popular/pib;
+
+    float densopopular2 = popular2/area2;
+    float percapita2 = popular2/pib2;
+    
+  double cartatotal = popular + area + pib + pontotur + percapita + densopopular;
+
+  double cartatotal2 = popular2 + area2 + pib2 + pontotur2 + percapita2 + densopopular2; 
+
+  printf("Estado, Cidade e Código da 1 carta:\n %s, %s, %s\n", estado, cidade, codigocarta);
+  printf("Estado, Cidade e Código da 2 carta:\n %s, %s, %s\n", estado2, cidade2, codigocarta2);
+  
+   printf("(População)\n");  
+    if(popular > popular2){
+        printf("1 carta vencedora: %.3f vs %.3f\n", popular, popular2);
+    }else{
+        printf("2 carta vencedora: %.3f vs %.3f\n", popular2, popular);
+    }
+    printf("(Área)\n");
+     if(area > area2){
+        printf("1 carta vencedora: %.3f vs %.3f\n", area, area2);
+    }else{
+        printf("2 carta vencedora: %.3f vs %.3f\n", area2, area);
+    }
+    printf("(PIB)\n");
+    if(pib > pib2){
+        printf("1 carta vencedora: %.3f vs %.3f\n", pib, pib2);
+    }else{
+        printf("2 carta vencedora: %.3f vs %.3f\n", pib2, pib);
+    }
+    printf("(Pontos Turísticos)\n");
+    if(pontotur > pontotur2){
+        printf("1 carta vencedora: %i vs %i\n", pontotur, pontotur2);
+    }else{
+        printf("2 carta vencedora: %i vs %.i\n", pontotur2, pontotur);
+    }
+    printf("(Densidade Populacional)\n");
+    if(densopopular < densopopular2){
+        printf("1 carta vencedora: %.3f vs %.3f\n", densopopular, densopopular2);
+    }else{
+        printf("2 carta vencedora: %.3f vs %.3f\n", densopopular2, densopopular);
+    }
+    printf("(PIB per capita)\n");
+    if(percapita > percapita2){
+        printf("1 carta vencedora: %.3f vs %.3f\n", percapita, percapita2);
+    }else{
+        printf("2 carta vencedora: %.3f vs %.3f\n", percapita2, percapita);
+    }
+    printf("(Total das Cartas)\n");
+    if(cartatotal > cartatotal2){
+        printf("1 carta vencedora: %.3f vs %.3f\n", cartatotal, cartatotal2);
+    }else{
+        printf("2 carta vencedora: %.3f vs %.3f\n", cartatotal2, cartatotal);
+    }
+
+    return 0;
+}
