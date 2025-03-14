@@ -1,7 +1,5 @@
+#include <stdio.h>
 int contar = 0;
-// criei um contador que contabiliza quantas vezes chamei a função chamada
-//que por sua vez vai perguntar e guardar a resposta do úsuario
-//isso sem eu ter que escrever a pergunta e o scanf pra cada pergunta
 
 void chamada(char *formato, void *variavel){
     contar ++;
@@ -13,9 +11,16 @@ void segundachamada(char *formato, void *variavel){
     printf("digite %i:\n", contar);
     scanf(formato, variavel);
 }
-// na segunda carta simplesmente inverti o contador, agora ele diminui conforme eu chamo
 
 int main(){
+
+char nomepais[20];
+char nomepais2[20];
+printf("Digite o nome do País: ");
+scanf("%s", &nomepais);
+printf("digite outro País: ");
+scanf("%s", &nomepais2);
+
 printf("Bem Vindo ao SuperTrunfo: Países\nAqui está sua tabela de opções:\nEstado(1)Cidade(2)Codigo da Carta(3)\nPopulação(4)Área(5)PIB(6)Pontos Turísticos(7)\n");
 
 char estado[10];
@@ -71,52 +76,71 @@ segundachamada("%i", &pontotur2);
   double cartatotal = popular + area + pib + pontotur + percapita + densopopular;
 
   double cartatotal2 = popular2 + area2 + pib2 + pontotur2 + percapita2 + densopopular2; 
+int escolha;
+  printf("Digite o número do carater a ser comparado, estado, cidade e codigo da carta não podem ser comparados\n");
+  scanf("%i", &escolha);
 
-  printf("Estado, Cidade e Código da 1 carta:\n %s, %s, %s\n", estado, cidade, codigocarta);
-  printf("Estado, Cidade e Código da 2 carta:\n %s, %s, %s\n", estado2, cidade2, codigocarta2);
-  
+  printf("Nome do País: %s\n", nomepais);
+  printf("Nome do 2 Paiś: %s\n", nomepais2);
+
+switch(escolha){
+  case 1:
    printf("(População)\n");  
     if(popular > popular2){
         printf("1 carta vencedora: %.3f vs %.3f\n", popular, popular2);
     }else{
         printf("2 carta vencedora: %.3f vs %.3f\n", popular2, popular);
     }
+    break;
+    case 2:
     printf("(Área)\n");
      if(area > area2){
         printf("1 carta vencedora: %.3f vs %.3f\n", area, area2);
     }else{
         printf("2 carta vencedora: %.3f vs %.3f\n", area2, area);
     }
+    break;
+    case 3:
     printf("(PIB)\n");
     if(pib > pib2){
         printf("1 carta vencedora: %.3f vs %.3f\n", pib, pib2);
     }else{
         printf("2 carta vencedora: %.3f vs %.3f\n", pib2, pib);
     }
+    break;
+    case 4:
     printf("(Pontos Turísticos)\n");
     if(pontotur > pontotur2){
         printf("1 carta vencedora: %i vs %i\n", pontotur, pontotur2);
     }else{
         printf("2 carta vencedora: %i vs %.i\n", pontotur2, pontotur);
     }
+    break;
+    case 5:
     printf("(Densidade Populacional)\n");
     if(densopopular < densopopular2){
         printf("1 carta vencedora: %.3f vs %.3f\n", densopopular, densopopular2);
     }else{
         printf("2 carta vencedora: %.3f vs %.3f\n", densopopular2, densopopular);
     }
-    printf("(PIB per capita)\n");
+    break;
+    case 6:
+    printf("(Percapita)\n");
     if(percapita > percapita2){
         printf("1 carta vencedora: %.3f vs %.3f\n", percapita, percapita2);
     }else{
         printf("2 carta vencedora: %.3f vs %.3f\n", percapita2, percapita);
     }
+    break;
+    case 7:
     printf("(Total das Cartas)\n");
     if(cartatotal > cartatotal2){
         printf("1 carta vencedora: %.3f vs %.3f\n", cartatotal, cartatotal2);
     }else{
         printf("2 carta vencedora: %.3f vs %.3f\n", cartatotal2, cartatotal);
     }
+    break;
+}
 
     return 0;
 }
