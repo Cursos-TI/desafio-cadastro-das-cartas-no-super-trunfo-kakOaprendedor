@@ -1,0 +1,18 @@
+#include <stdio.h>
+void rainha(){int a=1; while(a<=8){printf("rainha %ix esquerda\n", a);a++;}}
+
+void torre(){int b=1; while(b<=5){printf("torre %ix direita\n", b);b++;}}
+
+void bispo(){int c=1;while(c<=5){printf("bispo %ix cima\n", c);c++;;if(c<=5){continue;}int d=1;while(d<=1){printf("bispo %ix esquerda\n", d);d++;}}
+
+}
+
+void cavalo(){int e=1;int f=1;while(e<=2){printf("cavalo %ix cima\n", e);e++;}f++;if(e>=2 && f>=2){printf("cavalo %ix direita\n", f);}}
+int main(){
+   rainha();
+   torre();
+   bispo();
+   cavalo();
+ 
+    return 0;
+}
