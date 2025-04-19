@@ -1,0 +1,96 @@
+#include <stdio.h>
+
+int main() {
+    // Declaração das matrizes 10x10
+    int matriz1[10][10] = {0};
+    int matriz2[10][10] = {0};
+    int matriz3[10][10] = {0};
+
+    // Preenchendo a matriz1 conforme o pedido
+    // 2 colunas com 3 células preenchidas com o valor 3
+    for (int i = 3; i <= 5; i++) {
+        if (i >= 0 && i < 10) { // Verifica se estamos dentro dos limites da matriz
+            if (matriz1[i][2] == 0) matriz1[i][2] = 3; // Evita sobreposição
+            if (matriz1[i][7] == 0) matriz1[i][7] = 3; // Evita sobreposição
+        }
+    }
+
+    // 2 diagonais com 3 células preenchidas com o valor 3
+    if (3 >= 0 && 3 < 10 && 3 >= 0 && 3 < 10) {
+        if (matriz1[3][3] == 0) matriz1[3][3] = 3; // Evita sobreposição
+    }
+    if (4 >= 0 && 4 < 10 && 4 >= 0 && 4 < 10) {
+        if (matriz1[4][4] == 0) matriz1[4][4] = 3; // Evita sobreposição
+    }
+    if (5 >= 0 && 5 < 10 && 5 >= 0 && 5 < 10) {
+        if (matriz1[5][5] == 0) matriz1[5][5] = 3; // Evita sobreposição
+    }
+
+    if (3 >= 0 && 3 < 10 && 6 >= 0 && 6 < 10) {
+        if (matriz1[3][6] == 0) matriz1[3][6] = 3; // Evita sobreposição
+    }
+    if (4 >= 0 && 4 < 10 && 5 >= 0 && 5 < 10) {
+        if (matriz1[4][5] == 0) matriz1[4][5] = 3; // Evita sobreposição
+    }
+    if (5 >= 0 && 5 < 10 && 4 >= 0 && 4 < 10) {
+        if (matriz1[5][4] == 0) matriz1[5][4] = 3; // Evita sobreposição
+    }
+
+    // Preenchendo a matriz2 com o cone (valor 1)
+    int centro = 5; // Centro da matriz (linha 0, coluna 5)
+    for (int i = 0; i < 10; i++) {
+        for (int j = centro - i; j <= centro + i; j++) {
+            if (j >= 0 && j < 10) {
+                if (matriz2[i][j] == 0) matriz2[i][j] = 1; // Evita sobreposição
+            }
+        }
+    }
+
+    // Preenchendo a matriz3 com o octaedro (valor 1)
+    int mid = 5; // Centro da matriz (linha 0, coluna 5)
+    
+    // Preenchendo a parte superior do octaedro
+    for (int i = 0; i <= 4; i++) {
+        for (int j = mid - i; j <= mid + i; j++) {
+            if (j >= 0 && j < 10) {
+                if (matriz3[i][j] == 0) matriz3[i][j] = 1; // Evita sobreposição
+            }
+        }
+    }
+
+    // Espelhando a parte inferior do octaedro
+    for (int i = 5; i < 10; i++) {
+        for (int j = mid - (9 - i); j <= mid + (9 - i); j++) {
+            if (j >= 0 && j < 10) {
+                if (matriz3[i][j] == 0) matriz3[i][j] = 1; // Evita sobreposição
+            }
+        }
+    }
+
+    // Exibindo as matrizes
+    printf("Matriz 1 (com 2 colunas e 2 diagonais preenchidas com 3):\n");
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", matriz1[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nMatriz 2 (Cone formado):\n");
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", matriz2[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nMatriz 3 (Octaedro formado):\n");
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", matriz3[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
